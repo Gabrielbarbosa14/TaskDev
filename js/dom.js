@@ -8,14 +8,21 @@ export function limparInput() {
   document.querySelector("#input-tarefa").value = "";
 }
 
-// Função para adicionar uma nova tarefa à lista de tarefas no DOM
-export function adicionarTarefaNaLista(texto) {
+// Função para renderizar a lista de tarefas no DOM
+export function renderizarTarefas(tarefas) {
   const lista = document.querySelector("#lista-tarefas");
+  lista.innerHTML = "";
 
-  const li = document.createElement("li");
-  li.textContent = texto;
+  tarefas.forEach((tarefa) => {
+    const li = document.createElement("li");
+    li.textContent = tarefa.texto;
 
-  lista.appendChild(li);
+    if (tarefa.concluida) {
+      li.style.textDecoration = "line-throug";
+    }
+
+    lista.appendChild(li);
+  });
 }
 
 // Função para exibir mensagens de validação ou sucesso para o usuário
