@@ -33,8 +33,8 @@ export function exibirMensagem(mensagem, tipo) {
     msg = document.createElement("p");
     msg.id = "mensagem";
     document.body.insertBefore(msg, document.querySelector("#lista-tarefas"));
-
-    msg.textContent = mensagem;
-    msg.style.color = tipo === "error" ? "red" : "green";
   }
+
+  msg.textContent = mensagem;
+  msg.style.color = tipo === "error" ? "red" : "green";
 }
