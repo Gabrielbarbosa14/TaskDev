@@ -1,11 +1,10 @@
-// Este módulo é responsável por validar as tarefas antes de adiciona-las
+//Este modulo é responsavel por validar tarefas antes de adiciona-las
 
-// Função para validar o texto da tarefa, tem que ter ao menos 3 caracteres
-
-// Array para armazenar as tarefas
+//Função para validar o txto da tarefa, tem quer ter ao menos 3 caracteres
+//Array para armazenar as tarefas
 let tarefas = [];
 
-// Função para adicionar uma nova tarefa
+//função para adicionar uma nova tarefa
 export function adicionarTarefa(texto) {
   const tarefa = {
     id: Date.now(),
@@ -38,7 +37,7 @@ export function validarTarefa(texto) {
   };
 }
 
-// Função para obter todas as tarefas
+//Função para obter todas as tarefas
 export function obterTarefas() {
   return tarefas;
 }

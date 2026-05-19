@@ -7,25 +7,35 @@
       href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="/css/style.css" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/style.css" />
     <script src="/js/main.js" defer type="module"></script>
     <title>TaskDev</title>
   </head>
   <body>
-    <h1>TaskDev</h1>
+    <div class="app">
+      <header class="app-header">
+        <h1>TaskDev</h1>
+      </header>
 
-    <form id="form-tarefa">
-      <input
-        type="text"
-        id="input-tarefa"
-        placeholder="Digite uma tarefa"
-        required
-      />
-      <button type="submit">Adicionar</button>
-    </form>
+      <main class="app-content">
+        <form id="form-tarefa" aria-label="Adicionar nova tarefa">
+          <input
+            type="text"
+            id="input-tarefa"
+            placeholder="Digite sua tarefa..."
+            aria-label="Descrição da tarefa"
+          />
+          <button type="submit">Adicionar</button>
+        </form>
 
-    <ul id="lista-tarefas"></ul>
+        <p id="mensagem" role="status" aria-live="polite"></p>
+
+        <ul id="lista-tarefas" aria-label="Lista de tarefas"></ul>
+
+        <p id="dica"></p>
+      </main>
+    </div>
   </body>
 </html>
