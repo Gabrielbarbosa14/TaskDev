@@ -193,5 +193,10 @@ form #entrar:hover {
 }
 
 #criar a {
+  color: #02afe3;
+  transition: color 0.3s ease;
+}
+
+#criar a:hover {
   color: #00c3ff;
 }
