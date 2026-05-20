@@ -26,29 +26,79 @@ html {
 BASE
 =================*/
 body {
-  background: var(--bg-main);
+  background: #f5f5f5;
   color: var(--text-primary);
   min-height: 100vh;
   display: flex;
   justify-content: center;
+  align-items: center;
   padding: 2.5rem 1rem;
 }
+
 /*===============
 CONTAINER PRINCIPAL
 =================*/
 .app {
-  width: 100%;
-  max-width: 32.5rem;
+  width: 32.5rem;
+  height: 85vh;
   background: var(--bg-card);
   border-radius: 1rem;
   padding: 2rem;
-  box-shadow: 0 1.5rem 2.5rem rgba(0, 0, 0, 0.06);
+  aspect-ratio: 1/1;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+}
+
+@property --deg {
+  syntax: "<angle>";
+  inherits: true;
+  initial-value: 0deg;
+}
+
+.app::before,
+.app::after {
+  content: "";
+  position: absolute;
+  height: 85vh;
+  width: 32.5rem;
+  background: conic-gradient(
+    from var(--deg) at center,
+    #00c3ff,
+    #4d0199,
+    #6300c6,
+    #00c3ff
+  );
+  border-radius: inherit;
+  z-index: -2;
+  padding: 2px;
+  animation: autoRotate 3s linear infinite;
+}
+
+.app::after {
+  filter: blur(10px);
+}
+
+@keyframes autoRotate {
+  to {
+    --deg: 360deg;
+  }
+}
+
+.app-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
 }
 /*===============
 TITULO
 =================*/
 .app h1 {
-  font-size: 1.8rem;
+  font-size: 2.5rem;
   font-weight: 600;
   margin-bottom: 1.5rem;
 }
@@ -59,6 +109,7 @@ form {
   display: flex;
   gap: 0.75rem;
   margin-bottom: 1.5rem;
+  flex-shrink: 0;
 }
 
 input[type="text"] {
@@ -101,12 +152,72 @@ LISTA DE TAREFAS
 ul {
   list-style: none;
   margin-top: 1rem;
+
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+
+  padding-right: 0.5rem;
+}
+
+ul::-webkit-scrollbar {
+  width: 6px;
+}
+
+ul::-webkit-scrollbar-thumb {
+  background-color: var(--border-light);
+  border-radius: 3px;
 }
 
 li {
   padding: 0.875rem;
   border-bottom: 0.0625rem solid var(--border-light);
   font-size: 0.95rem;
+}
+
+.tarefa {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.tarefa span {
+  flex: 1;
+}
+
+.tarefa.concluida span {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+.tarefa-acoes {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.tarefa-acoes button {
+  background: transparent;
+  border: 0.0625rem solid var(--border-light);
+  border-radius: 0.75rem;
+  padding: 0.5rem 0.9rem;
+  font-size: 0.8rem;
+  color: var(--text-primary);
+  cursor: pointer;
+}
+
+.tarefa-acoes .btn-concluir {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.tarefa-acoes .btn-remover {
+  border-color: var(--error);
+  color: var(--error);
+}
+
+.tarefa-acoes button:hover {
+  background: rgba(0, 0, 0, 0.03);
 }
 
 li:last-child {
@@ -120,6 +231,7 @@ MENSAGENS
 #mensagem {
   margin-top: 0.75rem;
   font-size: 0.9rem;
+  flex-shrink: 0;
 }
 
 #mensagem.erro {
@@ -135,7 +247,10 @@ DICA EXTERNA
 =================*/
 
 #dica {
-  margin-top: 1.5rem;
+  margin-top: auto;
+  padding-top: 1.5rem;
   font-size: 0.9rem;
   color: var(--text-secondary);
+
+  flex-shrink: 0;
 }

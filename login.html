@@ -7,10 +7,63 @@
     <link rel="stylesheet" href="css/style-login.css" />
   </head>
   <body>
-    <form>
+    <div class="container">
+      <div class="bubbles">
+        <span style="--i: 11"> </span>
+        <span style="--i: 12"> </span>
+        <span style="--i: 24"> </span>
+        <span style="--i: 10"> </span>
+        <span style="--i: 14"> </span>
+        <span style="--i: 23"> </span>
+        <span style="--i: 18"> </span>
+        <span style="--i: 16"> </span>
+        <span style="--i: 19"> </span>
+        <span style="--i: 20"> </span>
+        <span style="--i: 35"> </span>
+        <span style="--i: 18"> </span>
+        <span style="--i: 21"> </span>
+        <span style="--i: 13"> </span>
+        <span style="--i: 26"> </span>
+        <span style="--i: 17"> </span>
+        <span style="--i: 13"> </span>
+        <span style="--i: 28"> </span>
+        <span style="--i: 11"> </span>
+        <span style="--i: 11"> </span>
+        <span style="--i: 11"> </span>
+        <span style="--i: 12"> </span>
+        <span style="--i: 24"> </span>
+        <span style="--i: 10"> </span>
+        <span style="--i: 14"> </span>
+        <span style="--i: 23"> </span>
+        <span style="--i: 18"> </span>
+        <span style="--i: 16"> </span>
+        <span style="--i: 19"> </span>
+        <span style="--i: 20"> </span>
+        <span style="--i: 35"> </span>
+        <span style="--i: 18"> </span>
+        <span style="--i: 21"> </span>
+        <span style="--i: 13"> </span>
+        <span style="--i: 26"> </span>
+        <span style="--i: 17"> </span>
+        <span style="--i: 13"> </span>
+        <span style="--i: 28"> </span>
+        <span style="--i: 11"> </span>
+        <span style="--i: 11"> </span>
+        <span style="--i: 20"> </span>
+        <span style="--i: 35"> </span>
+        <span style="--i: 18"> </span>
+        <span style="--i: 21"> </span>
+        <span style="--i: 13"> </span>
+        <span style="--i: 26"> </span>
+        <span style="--i: 17"> </span>
+        <span style="--i: 13"> </span>
+        <span style="--i: 13"> </span>
+      </div>
+    </div>
+    <form method="post">
       <h1>Login</h1>
       <span>
-        <label for="nome" method="POST">Nome de usuário</label>
+        <label for="nome">Nome de usuário</label>
         <input
           type="text"
           id="nome"
@@ -20,17 +73,40 @@
         />
       </span>
       <span>
-        <label for="senha" method="POST">Digite sua senha</label>
+        <label for="senha">Digite sua senha</label>
         <input
-          type="text"
+          type="password"
           id="senha"
           name="senha"
           required
           placeholder="Digite sua senha"
         />
       </span>
-      <button type="submit">Entrar</button>
-      <p>Ainda não tem uma conta? <a href="#">Clique aqui para criar uma</a></p>
+
+      <a href="index.html" id="link-entrar" onclick="enviar(event)">
+        <p id="entrar">Entrar</p>
+      </a>
+
+      <p id="criar">
+        Ainda não tem uma conta?
+        <a href="sc.html">Clique aqui para criar uma</a>
+      </p>
     </form>
+
+    <script>
+      // Mudança 2: A função agora recebe o parâmetro 'event'
+      function enviar(event) {
+        let nome = document.querySelector("#nome").value;
+        let senha = document.querySelector("#senha").value;
+
+        // Verifica se qualquer um dos dois campos está vazio
+        if (nome.trim().length === 0 || senha.trim().length === 0) {
+          // Mudança 3: Cancela o comportamento padrão do link de mudar de página
+          event.preventDefault();
+
+          alert("Por favor, preencha todos os campos antes de entrar.");
+        }
+      }
+    </script>
   </body>
 </html>

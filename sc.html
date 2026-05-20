@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Faça login para entrar no Task Dev</title>
+    <link rel="stylesheet" href="css/style-sc.css" />
+  </head>
+  <body>
+    <form method="post">
+      <h1>Cadastre-se</h1>
+      <span>
+        <label for="nome">Nome de usuário</label>
+        <input
+          type="text"
+          id="nome"
+          name="nome"
+          required
+          placeholder="Digite o seu usuário"
+        />
+      </span>
+      <span>
+        <label for="senha" method="POST">Digite sua senha</label>
+        <input
+          type="password"
+          id="senha"
+          name="senha"
+          required
+          placeholder="Digite sua senha"
+        />
+      </span>
+      <span>
+        <label for="senha" method="POST">Confirme sua senha</label>
+        <input
+          type="text"
+          id="confirmar-senha"
+          name="senha"
+          required
+          placeholder="Digite sua senha"
+        />
+      </span>
+      <a href="index.html" id="link-entrar" onclick="enviar(event)">
+        <p id="entrar">Entrar</p>
+      </a>
+      <p>
+        Já tem uma conta?
+        <a href="login.html">Clique aqui para fazer login</a>
+      </p>
+    </form>
+  </body>
+  <script>
+    function enviar(event) {
+      let nome = document.querySelector("#nome").value;
+      let senha = document.querySelector("#senha").value;
+      let confirmSenha = document.querySelector("#confirmar-senha").value;
+
+      // Verifica se qualquer um dos dois campos está vazio
+      if (
+        nome.trim().length === 0 ||
+        senha.trim().length === 0 ||
+        confirmSenha.trim().length === 0
+      ) {
+        // Mudança 3: Cancela o comportamento padrão do link de mudar de página
+        event.preventDefault();
+
+        alert("Por favor, preencha todos os campos antes de entrar.");
+      }
+    }
+  </script>
+</html>
